@@ -1,0 +1,41 @@
+.full-height-flex-center{
+    height: 98vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.full-height{
+    height: 100vh;
+
+}
+.col-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.link{color: #fabc1f; cursor: pointer;}
+.primary-color{
+    color: #fabc1f;
+}
+.primary-bg{
+    background-color: #fabc1f;
+}
+.secondary-color{
+    color: #fff;
+}
+.secondary-bg{
+    background-color: #fff;
+}
+.text-color{
+    color: #111111;
+}
+.br{
+    border: 1px solid yellow;
+}
+.sid-nav{
+    min-height: 100vh;
+}

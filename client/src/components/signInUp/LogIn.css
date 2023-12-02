@@ -1,0 +1,21 @@
+/* LogIn.css */
+.img-fluid {
+    width: 100%;
+    height: auto;
+  }
+  
+  .login-form-cont{display: block;}
+  @media (min-width: 768px) {
+    .img-fluid-md {
+        height: 100vh;
+        width: auto;
+    }
+    .login-form-cont{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  
+  }
+  }
+  

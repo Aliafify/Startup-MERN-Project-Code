@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+server.zip/
+build.zip/
+server.zip/
+.git/
+.env/
+/.zib

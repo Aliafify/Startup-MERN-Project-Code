@@ -1,0 +1,12 @@
+.custom-col {
+    width: 150px ; /* Adjust the width as needed */
+
+  }
+  
+  .custom-col.minimized {
+    width: 50px; /* Adjust the minimized width as needed */
+  }
+  
+  .custom-col-scroll {
+    width: calc(100% - 150px); /* Adjust the width calculation based on the non-minimized width */
+  }

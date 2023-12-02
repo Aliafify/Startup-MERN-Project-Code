@@ -1,0 +1,36 @@
+.sidnav{
+    width: 100%;
+    height: fit-content;
+    /* position: fixed ; */
+    /* right: 0px; */
+    /* background-color: #3A444E; */
+    /* direction: rtl; */
+    color: rgb(0, 0, 0);
+}
+.menu-item:hover{
+  background-color: black;
+ padding: 5px;
+ color: white;
+ cursor: pointer;
+}
+.side-menu{
+    list-style: none;
+    padding-right: 1vw;
+
+}
+.side-tab{
+    display: inline-block;
+    width:100%;
+    font-size: 1px;
+    text-decoration: none;
+    padding-left: 10px;
+}
+.menu-item hr{
+    margin-bottom: 0px;
+}
+.side-link{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    font-size: 14px;
+
+}
