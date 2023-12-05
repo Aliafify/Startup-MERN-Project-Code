@@ -8,6 +8,8 @@ import "./components/general.css"
 import Sign from "./components/signInUp/sign";
 import Dashboard from "./components/dashboard/dashboard";
 import Profile from "./components/dashboard/profile";
+import Affilate from './components/affilation/Affilate';
+import Team from './components/userTeam/team';
 function App() {
   
   
@@ -16,7 +18,7 @@ function App() {
   useEffect(()=>{
     const body = document.querySelector('body');
     body.style.direction='rtl';
-    body.style.fontFamily= 'Reem Kufi';
+    body.style.fontFamily= 'Noto Kufi Arabic';
     
     dispatch(intializeLogIn());
   },[])
@@ -30,7 +32,8 @@ console.log(user)
     <Route path="*" element={<Sign/>}/>
 
     <Route path="/" element={<Sign/>}/>
-
+    {/* Affilation route */}
+    <Route path="/affilate/:id" element={<Affilate/>}/>
     {/* Admin Routes */}
  
 
@@ -39,7 +42,11 @@ console.log(user)
       <>
       {/* insert user routes here */}
 <Route path="/dashboard/:user" element={<Dashboard/>}>
-  <Route path="profile" element={<Profile user={user}/>}/>
+    <Route path="profile" element={<Profile user={user}/>}/>
+    {/* user routes */}
+    {user.role==='user'&&<>
+       <Route path='team' element={<Team/>}/>
+    </>}
 </Route>
       </>
     )}

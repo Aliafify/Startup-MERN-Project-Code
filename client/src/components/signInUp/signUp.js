@@ -1,5 +1,5 @@
 // Import necessary components and styles
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -12,7 +12,7 @@ import { Register_Admin } from '../../actions/signin-up';
 import { useDispatch } from 'react-redux';
 // import { Link } from 'react-router-dom';
 
-function SignUp({ setSign }) {
+function SignUp({ setSign,savedAffilate }) {
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('');
   const [phone, setPhone] = useState('');
@@ -20,6 +20,7 @@ function SignUp({ setSign }) {
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [message, setMessage] = useState(null)
+  const [AFF_CODE,setAFF_CODE] = useState(null);
 
   const dispatch = useDispatch();
   const handleSignUp = (e) => {
@@ -29,7 +30,7 @@ function SignUp({ setSign }) {
         return setMessage('password does not match')
       }
 
-      const userData = { name, email, password: password1, countryCode, phone };
+      const userData = { name, email, password: password1, countryCode, phone,affilationCode:AFF_CODE };
       dispatch(Register_Admin(userData)).then(res => {
         if (res.status === 200) {
           setMessage(res.data)
@@ -38,6 +39,7 @@ function SignUp({ setSign }) {
           setMessage(res.data)
         }
       })
+      // console.log(userData)
       console.log(userData)
     } catch (e) {
       console.log(e.message);
@@ -54,6 +56,20 @@ function SignUp({ setSign }) {
     // Add more country codes as needed
   ];
 
+
+  // Affilation Part 
+  useEffect(()=>{
+  console.log(savedAffilate)
+
+    const affilationCode = localStorage.getItem('AFFILATION_CODE');
+    console.log(affilationCode)
+    if(affilationCode && affilationCode!== null||''){
+      setAFF_CODE(affilationCode);
+    }
+    else{
+      setAFF_CODE(savedAffilate)
+    }
+  },[])
   return (
     <Container>
       <Row>

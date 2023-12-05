@@ -1,7 +1,7 @@
 import axios from "axios";
-export const urlBase = 'http://localhost:8073'
+// export const urlBase = 'http://localhost:8073'
 // export const urlBase = "https://ag-platform.com";
-// export const urlBase= ''
+export const urlBase= ''
 //---- get Adm----
 export const getAccounts = () => {
   return axios({

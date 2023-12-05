@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-const path = require("path");
+const path = require("path"); 
 
 // --------------connect to mongoDB--------------
 mongoose.set("useCreateIndex", true); //for warning
@@ -45,12 +45,13 @@ app.use(express.static("build"));
 app.use(express.static(path.resolve(__dirname, "./build")));
 app.use(express.static("uploads"));
 app.use(express.static(path.resolve(__dirname, "./uploads")));
-
+ 
 // app.use('/uploads', express.static('uploads'));
 
 const SignInUpRoutes = require('./routes/signin-up');
-
+const AffilationRoutes = require('./routes/affilation_routes');
 app.use('/api',SignInUpRoutes);
+app.use('/api',AffilationRoutes);
 
 app.get("/*", function (req, res) {
   res.sendFile(

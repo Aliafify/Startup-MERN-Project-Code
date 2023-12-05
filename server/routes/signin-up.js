@@ -6,14 +6,35 @@ const Account2 = require("../modules/userSchema.js");
 // const Account3 = require("./account3Schema.js");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+ 
 
-
+// affilation function 
+function addNewAffilate(id,affiatedId){
+  try{
+    if(!id||!affiatedId)return console.log('No affilation found ', ' , id: ',id,' ,AffilatedId: ', affiatedId)
+  Account2.findOne({_id:id},async(err,user)=>{
+   if(err){
+    console.log(err); 
+   };
+   if(!user){
+    console.log('Affilater user does not exist')
+   }
+   if(user){
+    user.AffilationTree?user.AffilationTree.push(affiatedId):user.AffilationTree=[affiatedId];
+    await user.save()
+     console.log('affilation process success')
+    }
+  }).catch(e=>{console.log(e.message)})
+  }
+  catch(e){console.log('Add_New_Affilate_Error',e.message)}
+}
 
 // Register a user
 Router.post("/register/user", createUser);
 function createUser(req, res) {
   try {
     console.log('try')
+    
     Account2.findOne({ email: req.body.email }, async (err, doc) => {
       if (err) throw err;
       if (err) {
@@ -25,7 +46,12 @@ function createUser(req, res) {
       if (!doc) {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new Account2({ ...req.body, password: hashedPassword });
-        await newUser.save();
+        await newUser.save().then(
+          // save affilation
+          (data)=>{
+            addNewAffilate(req.body.affilationCode,data._id);
+          }
+        );
         res.status(200);
         res.send("created");
       }
